@@ -85,7 +85,7 @@ public:
 		y = 0;
 	}
 
-	cPaddle(int posX, int posY) : cPaddle() {
+	cPaddle(int posX, int posY){
 		originalX = posX;
 		originalY = posY;
 		x = posX;
@@ -135,7 +135,7 @@ public:
 		if (player == player1) {
 			score1++;
 		}
-		else if (player == player1) {
+		else if (player == player2) {
 			score2++;
 		}
 
