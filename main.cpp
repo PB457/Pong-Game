@@ -1,3 +1,4 @@
+#include <Windows.h>
 #include <iostream>
 #include <time.h>
 #include <conio.h>
@@ -5,6 +6,18 @@
 using namespace std;
 
 enum eDir {STOP = 0, LEFT = 1, UPLEFT = 2, DOWNLEFT = 3, RIGHT = 4, UPRIGHT = 5, DOWNRIGHT = 6};
+
+void clearScreen()
+{
+    HANDLE hOut;
+    COORD Position;
+
+    hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    Position.X = 0;
+    Position.Y = 0;
+    SetConsoleCursorPosition(hOut, Position);
+}
 
 class cBall {
 private:
@@ -44,25 +57,31 @@ public:
 			break;
 		case LEFT:
 			x -= 2;
+			Sleep(50);
 			break;
 		case RIGHT:
 			x += 2;
+			Sleep(50);
 			break;
 		case UPRIGHT:
 			x++;
 			y++;
+			Sleep(50);
 			break;
 		case UPLEFT:
 			x--;
 			y++;
+			Sleep(50);
 			break;
 		case DOWNRIGHT:
 			x++;
 			y--;
+			Sleep(50);
 			break;
 		case DOWNLEFT:
 			x--;
 			y--;
+			Sleep(50);
 			break;
 		default:
 			break;
@@ -145,7 +164,7 @@ public:
 	}
 
 	void Draw() {
-		system("cls");
+		clearScreen();
 		cout << "Score (1): " << score1 << endl;
 		cout << "Score (2): " << score2 << endl;
 		for (int i = 0; i < width + 2; i++) {
